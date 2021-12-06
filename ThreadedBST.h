@@ -29,5 +29,20 @@ public:
 	void Insert(int);
 
 	// Inorder traversal
-	void Inorder(ThreadedBinarySearchTree*);	
+	void Inorder(ThreadedBinarySearchTree*);
+	
+	// Delete
+	
+	
+	// Copy
+	
+	
+	// Remove Even
+	
+	
+	// Operator= overload
+	
+	
+	// Operator<< overload
+	
 };
