@@ -9,10 +9,8 @@ struct tbstNode {
 	bool rThread;
 };
 
-class ThreadedBinarySearchTree {
-private:
-	// Insert helper function
-	ThreadedBinarySearchTree* Insert(ThreadedBinarySearchTree*, int);	
+class ThreadedBST {	
+	friend ostream &operator<<(ostream &out, const SkipList &skip);
 	
 public:
 	tbstNode* Search(int);
@@ -20,29 +18,41 @@ public:
 	tbstNode* curPtr;
 	
 	// Default constructor
-	ThreadedBinarySearchTree();
+	ThreadedBST();
 
 	// Parameterized constructor
-	ThreadedBinarySearchTree(int);
+	ThreadedBST(int rootItem);
 
 	// Insert function
-	void Insert(int);
+	ThreadedBST* Insert(ThreadedBST* root, int value);
 
-	// Inorder traversal
-	void Inorder(ThreadedBinarySearchTree*);
+	// Completes an inorder traversal of the threaded BST
+	void Inorder(ThreadedBST* root);
 	
 	// Delete
-	
+	bool deleteTBSTNode(ThreadedBST* root, int target);
 	
 	// Copy
-	
+	ThreadedBST* copyThreadedBST(ThreadedBST* root);
 	
 	// Remove Even
+	void removeEven();
 	
-	
-	// Operator= overload
-	
-	
-	// Operator<< overload
-	
+	// Clear
+	void clear()
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
