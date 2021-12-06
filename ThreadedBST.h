@@ -32,16 +32,16 @@ public:
 	void Inorder(ThreadedBinarySearchTree*);
 	
 	// Delete
-	
+	void remove(tbst<ItemType> *node, ItemType data);
 	
 	// Copy
-	
+	ThreadedBinarySearchTree(const ThreadedBinarySearchTree<ItemType> &tree);
 	
 	// Remove Even
-	
+	void removeEven();
 	
 	// Operator= overload
-	
+
 	
 	// Operator<< overload
 	
