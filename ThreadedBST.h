@@ -23,6 +23,12 @@ public:
 	// Parameterized constructor
 	ThreadedBST(int rootItem);
 
+  //Destructor
+  ~ThreadedBST();
+  
+  //Get Depth
+  int getDepth() const;
+
 	// Insert function
 	ThreadedBST* Insert(ThreadedBST* root, int value);
 
@@ -30,16 +36,26 @@ public:
 	void Inorder(ThreadedBST* root);
 	
 	// Delete
-	bool deleteTBSTNode(ThreadedBST* root, int target);
+
+	void remove(tbst<ItemType> *node, ItemType data);
 	
 	// Copy
-	ThreadedBST* copyThreadedBST(ThreadedBST* root);
+	ThreadedBST(const ThreadedBST<ItemType> &tree);
 	
 	// Remove Even
 	void removeEven();
 	
+  //Inorder Traverse for testing
+  void inorderTraverse();
+  
+  //I don't think we need these. 
+	// Operator= overload
+	// Operator<< overload
+	
+
 	// Clear
 	void clear()
+
 };
 
 
