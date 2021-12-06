@@ -9,10 +9,8 @@ struct tbstNode {
 	bool rThread;
 };
 
-class ThreadedBinarySearchTree {
-private:
-	// Insert helper function
-	ThreadedBinarySearchTree* Insert(ThreadedBinarySearchTree*, int);	
+class ThreadedBST {	
+	friend ostream &operator<<(ostream &out, const SkipList &skip);
 	
 public:
 	tbstNode* Search(int);
@@ -20,29 +18,57 @@ public:
 	tbstNode* curPtr;
 	
 	// Default constructor
-	ThreadedBinarySearchTree();
+	ThreadedBST();
 
 	// Parameterized constructor
-	ThreadedBinarySearchTree(int);
+	ThreadedBST(int rootItem);
+
+  //Destructor
+  ~ThreadedBST();
+  
+  //Get Depth
+  int getDepth() const;
 
 	// Insert function
-	void Insert(int);
+	ThreadedBST* Insert(ThreadedBST* root, int value);
 
-	// Inorder traversal
-	void Inorder(ThreadedBinarySearchTree*);
+	// Completes an inorder traversal of the threaded BST
+	void Inorder(ThreadedBST* root);
 	
 	// Delete
+
 	void remove(tbst<ItemType> *node, ItemType data);
 	
 	// Copy
-	ThreadedBinarySearchTree(const ThreadedBinarySearchTree<ItemType> &tree);
+	ThreadedBST(const ThreadedBST<ItemType> &tree);
 	
 	// Remove Even
 	void removeEven();
 	
+  //Inorder Traverse for testing
+  void inorderTraverse();
+  
+  //I don't think we need these. 
 	// Operator= overload
-
-	
 	// Operator<< overload
 	
+
+	// Clear
+	void clear()
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
