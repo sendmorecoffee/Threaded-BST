@@ -15,10 +15,10 @@ private:
 using namespace std;
 
 class ThreadedBST {	
-	friend ostream &operator<<(ostream &out, const SkipList &skip);
+	friend ostream &operator<<(ostream &out, const ThreadedBST &tree);
 
 	// Parameterized constructor
-	ThreadedBST(int rootItem);
+	ThreadedBST(ItemType rootItem);
 
 	//This is a different method from the one above, This one creates n number of nodes
 	//in nonincremental order
@@ -34,7 +34,7 @@ class ThreadedBST {
 	ThreadedBST* Insert(ThreadedBST* root, ItemType value);
 
 	// Remove
-	void remove(tbst<ItemType> *node, ItemType value);
+	void remove(BSTNode<ItemType> *node, ItemType value);
 
 	// Copy
 	ThreadedBST(const ThreadedBST<ItemType> &tree);
