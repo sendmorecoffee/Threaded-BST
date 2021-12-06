@@ -1,22 +1,33 @@
-//template<class ItemType>
-class ThreadedBST {
+#include <iostream>
+#include <iomanip>
 
+using namespacestd;
+struct tbstNode {
 	int data;
-	ThreadedBST *left;
-	ThreadedBST *right;
+	tbstNode *left;
+	tbstNode *right;
+	bool rThread;
+};
 
+class ThreadedBinarySearchTree {
+private:
+	// Insert helper function
+	ThreadedBinarySearchTree* Insert(ThreadedBinarySearchTree*, int);	
+	
 public:
-
+	tbstNode* Search(int);
+	tbstNode* root;
+	tbstNode* curPtr;
+	
 	// Default constructor
-	ThreadedBST();
+	ThreadedBinarySearchTree();
 
 	// Parameterized constructor
-	ThreadedBST(int);
+	ThreadedBinarySearchTree(int);
 
 	// Insert function
-	ThreadedBST* Insert(ThreadedBST*, int);
+	void Insert(int);
 
 	// Inorder traversal
-	void Inorder(ThreadedBST*);
-	
+	void Inorder(ThreadedBinarySearchTree*);	
 };
