@@ -14,9 +14,13 @@ private:
 
 using namespace std;
 
-class ThreadedBST {	
+class ThreadedBST {
+private:
 	friend ostream &operator<<(ostream &out, const ThreadedBST &tree);
+	
+	
 
+public:
 	// Parameterized constructor
 	ThreadedBST(ItemType rootItem);
 
