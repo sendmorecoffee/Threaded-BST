@@ -8,7 +8,7 @@ ThreadedBST::ThreadedBST() {
   this->data = 0;
   this->left = NULL;
   this->right = NULL;
-	}
+}
 
 ThreadedBST::ThreadedBST(int value) {
 	this->data = value;
