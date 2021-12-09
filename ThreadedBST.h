@@ -43,6 +43,8 @@ public:
 	// Copy
 	ThreadedBST(const ThreadedBST<ItemType> &tree);
 
+	
+	// Instead of this function, shuold we instead just pass a vector of the even numbers into the remove function from main?
 	// Remove Even
 	void removeEven();
 
