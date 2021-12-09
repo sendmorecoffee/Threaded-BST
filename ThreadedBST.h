@@ -14,8 +14,7 @@ private:
 		rightChildPtr = NULL;
 		isThreadedLeft = false;
 		isThreadedRight = false;
-	}
-
+	};
 };
 
 using namespace std;
