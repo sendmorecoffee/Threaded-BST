@@ -4,11 +4,17 @@
 template <class ItemType> struct BSTNode
 {
 private:
-  ItemType item; //Value
-  BSTNode <ItemType> *leftChildPtr; //Left Pointer
-  BSTNode <ItemType> *rightChildPtr; //Right Pointer
-  bool isThreadedLeft;	//Bool of left Thread
-  bool isThreadedRight;	//Bool of Right Thread
+	ItemType item; //Value
+	BSTNode <ItemType> *leftChildPtr; //Left Pointer
+	BSTNode <ItemType> *rightChildPtr; //Right Pointer
+	bool isThreadedLeft;	//Bool of left Thread
+	bool isThreadedRight;	//Bool of Right Thread
+	explicit BSTNode(int item) {
+		leftChildPtr = NULL;
+		rightChildPtr = NULL;
+		isThreadedLeft = false;
+		isThreadedRight = false;
+	}
 
 };
 
