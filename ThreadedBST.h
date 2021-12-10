@@ -1,62 +1,59 @@
+#ifndef ASS5_THREADEDBST_H
+#define ASS5_THREADEDBST_H
+
 #include <iostream>
 #include <iomanip>
 
-template <class ItemType> struct BSTNode
-{
-private:
-	ItemType item; //Value
-	BSTNode <ItemType> *leftChildPtr; //Left Pointer
-	BSTNode <ItemType> *rightChildPtr; //Right Pointer
-	bool isThreadedLeft;	//Bool of left Thread
-	bool isThreadedRight;	//Bool of Right Thread
-	explicit BSTNode(int item) {
-		leftChildPtr = NULL;
-		rightChildPtr = NULL;
-		isThreadedLeft = false;
-		isThreadedRight = false;
-	};
-};
-
 using namespace std;
 
-class ThreadedBST {
+class BSTNode {
+	friend class ThreadedBST;	
 private:
+	explicit BSTNode(int item);
+	int item; //Value
+	BSTNode *leftChildPtr; //Left Pointer
+	BSTNode *rightChildPtr; //Right Pointer
+	bool isThreadedLeft;	//Bool of left Thread
+	bool isThreadedRight;	//Bool of Right Thread
+};
+
+class ThreadedBST {
 	friend ostream &operator<<(ostream &out, const ThreadedBST &tree);
-	
-	
+
+private:
+	BSTNode* root = nullptr;
 
 public:
 	// Parameterized constructor
-	ThreadedBST(ItemType rootItem);
+	explicit ThreadedBST(int rootItem = 0);
 
-	//This is a different method from the one above, This one creates n number of nodes
-	//in nonincremental order
-	ThreadedBST(const int &n);
+	//This is a different method from the one above, 
+	// This one creates n number of nodes
+	//  in nonincremental order
+	ThreadedBST(const int& n);
 
-  	//Destructor
-  	~ThreadedBST();
+	//Destructor
+	virtual ~ThreadedBST();
 
- 	//Get Depth
-  	int getDepth() const;
+	//Get Depth
+	int getDepth() const;
 
 	// Insert function
-	ThreadedBST* Insert(ThreadedBST* root, ItemType value);
+	void Insert(ThreadedBST* root, int item);
 
 	// Remove
-	void remove(BSTNode<ItemType> *node, ItemType value);
+	void remove(BSTNode& node, int value);
 
 	// Copy
-	ThreadedBST(const ThreadedBST<ItemType> &tree);
+	ThreadedBST(const ThreadedBST& tree);
 
-	
-	// Instead of this function, shuold we instead just pass a vector of the even numbers into the remove function from main?
 	// Remove Even
 	void removeEven();
 
- 	// Completes an inorder traversal of the threaded BST
- 	void Inorder();
+	// Completes an inorder traversal of the threaded BST
+	void Inorder();
 
 	// Clear
 	void clear();
-
 };
+#endif
