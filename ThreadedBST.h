@@ -24,6 +24,9 @@ private:
 	BSTNode* root = nullptr;
 
 public:
+	// Default constructor
+	ThreadedBST();
+	
 	// Parameterized constructor
 	explicit ThreadedBST(int rootItem = 0);
 
