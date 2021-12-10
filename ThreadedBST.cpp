@@ -12,6 +12,10 @@ BSTNode::BSTNode(int item) {
 	this->isThreadedRight = false;
 }
 
+ThreadedBST::ThreadedBST() {
+    root = nullptr;
+}
+
 ThreadedBST::ThreadedBST(int item) { //TODO
 	
 }
