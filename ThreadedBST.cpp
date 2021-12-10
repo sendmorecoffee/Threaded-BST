@@ -1,50 +1,84 @@
+
 #include <iostream>
 #include "ThreadedBST.h"
 
 using namespace std;
 
-// Default Constructor
-ThreadedBST::ThreadedBST() {
-  this->data = 0;
-  this->left = NULL;
-  this->right = NULL;
+BSTNode::BSTNode(int item) {
+	this->item = item;
+	this->leftChildPtr = nullptr;
+	this->rightChildPtr = nullptr;
+	this->isThreadedLeft = false;
+	this->isThreadedRight = false;
 }
 
-ThreadedBST::ThreadedBST(int value) {
-	this->data = value;
-	this->left = right = NULL;
-}
-
-ThreadedBST* ThreadedBST::Insert(ThreadedBST* root, int value) {
-	if (!root) {
-		//Insert first node, if first root NULL
-		return new ThreadedBST(value);
-	}
+ThreadedBST::ThreadedBST(int item) { //TODO
 	
-	//Insert data
-	if(value > root->data) {
-		// Insert right node data, if the 'value'
-    		// to be inserted is greater than 'root' node data.
- 
-    		// Process right nodes.
-		root->right = Insert(root->right, value);
-	} else {
-		// Insert left node data, if the 'value'
-    		// to be inserted is greater than 'root' node data.
- 
-    		// Process left nodes.
-		root->left = Insert(root->left, value);
-	}
-
-	// Return 'root' node, after insertion
-	return root;
 }
 
-void ThreadedBST::Inorder(ThreadedBST* root) {
+void ThreadedBST::Insert(ThreadedBST* root, int item) {
+    	
+	// start with the root node
+    BSTNode *curr = root; 
+    // pointer to store the parent of the current node
+    BSTNode *parent = nullptr;
+ 
+    // if the tree is empty, create a new node and set it as root
+    if (root == nullptr) {
+        root = new BSTNode(item);
+        return;
+    }
+
+    // traverse the tree and find the parent node of the given item
+    while (curr != nullptr) {
+        // update the parent to the current node
+        parent = curr;
+ 
+        // if the given item is less than the current node, go to the
+        // left subtree; otherwise, go to the right subtree.
+        if (item < curr->item) {
+            if (curr->isThreadedLeft == true) {
+				break;
+			} else {
+				curr = curr->leftChildPtr;
+			}			
+        } else {
+            if (curr->isThreadedRight == true) {
+				break;
+			} else {
+				curr = curr->rightChildPtr;
+			}
+        }
+    } //end while loop
+ 
+    // construct a node and assign it to the appropriate parent pointer
+	BSTNode* newNode = new BSTNode(item);
+	newNode->isThreadedRight = newNode->isThreadedLeft = true;	
+
+	if (item < parent->item) {
+		//set newNode's left ptr to its parent's old left ptr
+		newNode->leftChildPtr = parent->leftChildPtr;
+		//newNode's right ptr points back at parent
+		newNode->rightChildPtr = parent;
+		//parent points to newNode
+		parent->leftChildPtr = newNode;
+		//set parent's isThreadedLeft(bool) to false as it now has 
+		// a lwft node
+		parent->isThreadedLeft = false;
+	} else {
+		newNode->rightChildPtr = parent->rightChildPtr;
+		newNode->leftChildPtr = parent;
+		parent->rightChildPtr = newNode;
+		parent->isThreadedRight = false;
+	}
+}
+
+
+void ThreadedBST::Inorder(ThreadedBST* root) { //TODO
 	if (!root){
 		return;
 	}
-	Inorder(root->left);
+	Inorder(root->leftChildPtr);
 	cout << root->data << endl;
-	Inorder(root->right);
+	Inorder(root->rightChildPtr);
 }
